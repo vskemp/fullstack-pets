@@ -3,7 +3,7 @@
 const pgp = require('pg-promise')({
     query: e => {
         // print the SQL query
-        console.log('QUERY: ${e.query}');
+        console.log(`Query: ${e.query}`);
     }
 });
 
