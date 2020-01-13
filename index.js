@@ -1,18 +1,34 @@
+const http= require('http');
+const express = require('express');
+
+const app = express();
+const PORT = 3000;
+
+const server = http.createServer(app);
+
 const pets = require('./models/pets');
 
-async function main() {
-    // const thePets = await pets.all();
-    // console.log(thePets);
-    // const aPet = await pets.one(1);
-    // console.log(aPet);
-    // const result = await pets.del(1);
-    // console.log(result);
-    //const result = await pets.updateName(1, 'the amazing oakley');
-    //console.log(result);
-    // const updateResult = await pets.updateBirthdate(1, new Date());
-    // console.log(updateResult);
-    const createResult = await pets.create('billy', 'goat', '2020-01-13', 1);
-    console.log(result);
-}
 
-main();
+app.get('/pets', async (req, res) => {
+    const thePets = await pets.all();
+    // // res.send('you want /pets');
+    res.json(thePets);
+    // const jsonString = JSON.stringify(thePets);
+    // res.write(jsonString);
+    // res.end();
+});
+
+app.get('pets/:id')
+//create
+app.get('/pets/create')
+app.post('/pets/create')
+//update
+app,get('/pets/:id/edit')
+app.post('/pets/:id/edit')
+//delete
+app.get('/pets/:id/delete')
+app.post('/pets/:id/delete')
+
+server.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
+});
