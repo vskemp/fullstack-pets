@@ -1,7 +1,7 @@
 create table owners (
     id serial primary key ,
     name text,
-    phone_number varchar(20)
+    phone_number varchar(20),
     hash text
     -- do owner have 1 pet or many?
     --pet_id integer reference pets (id), -- :(
